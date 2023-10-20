@@ -2,7 +2,8 @@ package ru.practicum.ewm;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import lombok.experimental.FieldDefaults; // Добавлена аннотация @FieldDefaults
+import lombok.experimental.FieldDefaults;
+
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 

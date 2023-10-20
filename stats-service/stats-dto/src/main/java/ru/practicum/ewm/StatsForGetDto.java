@@ -16,8 +16,8 @@ public class StatsForGetDto {
         this.uri = uri;
         this.hits = hits;
     }
+
     String app;
     String uri;
-
     Long hits;
 }
