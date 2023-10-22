@@ -1,20 +1,5 @@
 version: '3.1'
 services:
-  ewm-service:
-    build: main-service
-    image: main-service-image
-    container_name: main-service-container
-    ports:
-      - "8080:8080"
-    depends_on:
-      - ewm-db
-      - stats-server
-    environment:
-      - STATS_SERVER_URL=http://server:9090
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/mainDB
-      - POSTGRES_USER=DayZscripter
-      - POSTGRES_PASSWORD=DayZscripter
-
   stats-server:
     build: stats-service/stats-server
     image: stats-server-image
@@ -24,7 +9,31 @@ services:
     depends_on:
       - stats-db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/statsDB
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/statdb
+      - POSTGRES_USER=DayZscripter
+      - POSTGRES_PASSWORD=DayZscripter
+
+  stats-db:
+    image: postgres:14-alpine
+    container_name: stats-db
+    ports:
+      - "6541:5432"
+    environment:
+      - POSTGRES_DB=statdb
+      - POSTGRES_USER=DayZscripter
+      - POSTGRES_PASSWORD=DayZscripter
+
+  ewm-service:
+    build: main-service/
+    image: main-service-image
+    container_name: main-service-container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ewm-db
+    environment:
+      - STATS_SERVER_URL=http://stats-server:9090
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/mainservicedb
       - POSTGRES_USER=DayZscripter
       - POSTGRES_PASSWORD=DayZscripter
 
@@ -34,18 +43,6 @@ services:
     ports:
       - "6542:5432"
     environment:
-      - POSTGRES_DB=mainDB
-      - POSTGRES_USER=DayZscripter
-      - POSTGRES_PASSWORD=DayZscripter
-
-  stats-db:
-    image: postgres:14-alpine
-    container_name: stats-db
-    volumes:
-      - /var/lib/postgresql/data/
-    ports:
-      - "6541:5432"
-    environment:
-      - POSTGRES_DB=statsDB
+      - POSTGRES_DB=mainservicedb
       - POSTGRES_USER=DayZscripter
       - POSTGRES_PASSWORD=DayZscripter

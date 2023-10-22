@@ -2,19 +2,17 @@ package ru.practicum.ewm;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
+import static ru.practicum.ewm.ConstantsForDto.DATE_TIME_FORMAT_PATTERN;
 
-//Data Transfer Object (DTO) для передачи данных о хите в запросе.
-
-@Data
+@Getter
+@Setter
 @Builder
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class HitForPostDto {
     Long id;
 
@@ -27,6 +25,6 @@ public class HitForPostDto {
     @NotBlank
     String ip;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
     LocalDateTime timestamp;
 }
