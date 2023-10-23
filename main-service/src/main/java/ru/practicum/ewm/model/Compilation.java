@@ -3,7 +3,6 @@ package ru.practicum.ewm.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,7 +22,7 @@ public class Compilation {
     @JoinTable(name = "events_compilations",
             joinColumns = @JoinColumn(name = "compilation_id"),
             inverseJoinColumns = @JoinColumn(name = "event_id"))
-    private Set<Event> events = new HashSet<>();
+    private Set<Event> events; // = new HashSet<>(); убрана инициализация по совету ревьюера
 
     @Column(name = "pinned")
     private Boolean pinned;

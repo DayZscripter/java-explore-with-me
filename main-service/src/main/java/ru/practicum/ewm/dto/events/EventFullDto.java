@@ -37,7 +37,7 @@ public class EventFullDto {
     @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
     LocalDateTime publishedOn;
 
-    Boolean requestModeration;
+    boolean requestModeration;
 
     EventState state;
 
@@ -47,7 +47,7 @@ public class EventFullDto {
 
     LocationDto location;
 
-    Boolean paid;
+    boolean paid;
 
     Integer participantLimit;
 
