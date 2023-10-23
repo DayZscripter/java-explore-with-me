@@ -15,21 +15,21 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Hit {
+public class Hit { //предоставляет запись о хите в базе данных
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "app", nullable = false) //Идентификатор сервиса для которого записывается инфа
+    @Column(name = "app", nullable = false)
     String app;
 
-    @Column(name = "uri", nullable = false) //url для которого был осуществлен запрос
+    @Column(name = "uri", nullable = false)
     String uri;
 
-    @Column(name = "ip", nullable = false) //ip адрес пользователя, осуществившего запрос
+    @Column(name = "ip", nullable = false)
     String ip;
 
-    @Column(name = "created", nullable = false) //Дата и время, когда был совершен запрос к эндпоинту
+    @Column(name = "created", nullable = false)
     LocalDateTime timestamp;
 }

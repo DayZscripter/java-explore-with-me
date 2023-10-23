@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.ewm.HitForPostDto;
-import ru.practicum.ewm.StatsForGetDto;
+import ru.practicum.ewm.StatisticsForDto;
 import ru.practicum.ewm.service.StatsService;
 
 import javax.validation.Valid;
@@ -30,23 +30,23 @@ public class StatsController {
     }
 
     /**
-     * Получение статистики.
-     *
-     * @param start   Начальная дата и время.
-     * @param end     Конечная дата и время.
-     * @param uris    Список URI (необязательный).
-     * @param unique  Флаг уникальной статистики.
-     * @return Список статистики.
+     Получение статистики.
+
+     @param start   Начальная дата и время.
+     @param end     Конечная дата и время.
+     @param uris    Список URI (необязательный).
+     @param unique  Флаг уникальной статистики.
+     @return Список статистики.
      */
     @GetMapping("/stats")
     @ResponseStatus(HttpStatus.OK)
-    public List<StatsForGetDto> getStats(
+    public List<StatisticsForDto> getStats(
             @RequestParam @DateTimeFormat(pattern = dateTimePattern) LocalDateTime start,
             @RequestParam @DateTimeFormat(pattern = dateTimePattern) LocalDateTime end,
             @RequestParam(required = false) List<String> uris,
             @RequestParam(defaultValue = "false") boolean unique
     ) {
         log.info("Запрос на получение статистики");
-        return service.getStats(start, end, uris, unique);
+        return service.getStatistics(start, end, uris, unique);
     }
 }
