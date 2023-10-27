@@ -20,18 +20,6 @@ public class EventMapper {
         return event;
     }
 
-    public static EventShortDto toEventShortDto(Event event) {
-        return EventShortDto.builder()
-                .annotation(event.getAnnotation())
-                .category(CategoryMapper.toCategoryDto(event.getCategory()))
-                .eventDate(event.getEventDate())
-                .id(event.getId())
-                .initiator(UserMapper.toUserShortDto(event.getInitiator()))
-                .paid(event.getPaid())
-                .title(event.getTitle())
-                .build();
-    }
-
     public static EventFullDto toEventFullDto(Event event) {
         return EventFullDto.builder()
                 .annotation(event.getAnnotation())
@@ -47,6 +35,18 @@ public class EventMapper {
                 .publishedOn(event.getPublishedOn())
                 .requestModeration(event.getRequestModeration())
                 .state(event.getState())
+                .title(event.getTitle())
+                .build();
+    }
+
+    public static EventShortDto toEventShortDto(Event event) {
+        return EventShortDto.builder()
+                .annotation(event.getAnnotation())
+                .category(CategoryMapper.toCategoryDto(event.getCategory()))
+                .eventDate(event.getEventDate())
+                .id(event.getId())
+                .initiator(UserMapper.toUserShortDto(event.getInitiator()))
+                .paid(event.getPaid())
                 .title(event.getTitle())
                 .build();
     }

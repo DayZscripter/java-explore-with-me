@@ -1,6 +1,8 @@
 package ru.practicum.ewm.service;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,13 +27,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ParticipationRequestServiceImpl implements ParticipationRequestService {
 
-    private final ParticipationRequestRepository repository;
+    final ParticipationRequestRepository repository;
 
-    private final EventRepository eventRepository;
+    final EventRepository eventRepository;
 
-    private final UserRepository userRepository;
+    final UserRepository userRepository;
 
     @Transactional
     @Override

@@ -35,29 +35,22 @@ public class StatsServiceImpl implements StatsService {
         if (end.isBefore(start)) {
             throw new IncorrectlyMadeRequestException("Значение поля end не может быть раньше значения поля start");
         }
-
-        List<StatisticsForDto> statistics;
-        String logMessage;
-
         if (unique) {
             if (uris != null) {
-                statistics = repository.getAllByTimestampAndUriUnique(start, end, uris);
-                logMessage = "Получили статистику по заданным uri и уникальным ip";
+                log.info("Получили статистику по заданным uri и уникальным ip");
+                return repository.getAllByTimestampAndUriUnique(start,end, uris);
             } else {
-                statistics = repository.getAllByTimestampUnique(start, end);
-                logMessage = "Получили статистику по уникальным ip";
+                log.info("Получили статистику по уникальным ip");
+                return repository.getAllByTimestampUnique(start, end);
             }
         } else {
             if (uris != null) {
-                statistics = repository.getAllByTimestampAndUri(start, end, uris);
-                logMessage = "Получили общую статистику по заданным uri";
+                log.info("Получили общую статистику по заданным uri");
+                return repository.getAllByTimestampAndUri(start, end, uris);
             } else {
-                statistics = repository.getAllByTimestamp(start, end);
-                logMessage = "Получили общую статистику";
+                log.info("Получили общую статистику");
+                return repository.getAllByTimestamp(start, end);
             }
         }
-
-        log.info(logMessage);
-        return statistics;
     }
 }

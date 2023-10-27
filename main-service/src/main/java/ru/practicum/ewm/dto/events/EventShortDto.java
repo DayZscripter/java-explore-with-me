@@ -23,15 +23,14 @@ public class EventShortDto {
 
     Integer confirmedRequests;
 
+    @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
+    LocalDateTime eventDate;
+
     Long id;
 
     UserShortDto initiator;
 
     Boolean paid;
-
-    @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
-    LocalDateTime eventDate;
-
 
     String title;
 

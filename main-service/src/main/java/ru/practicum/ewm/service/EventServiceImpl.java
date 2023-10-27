@@ -1,6 +1,8 @@
 package ru.practicum.ewm.service;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -29,22 +31,24 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class EventServiceImpl implements EventService {
 
-    private final EventRepository eventRepository;
+    final EventRepository eventRepository;
 
-    private final LocationRepository locationRepository;
+    final LocationRepository locationRepository;
 
-    private final CategoryRepository categoryRepository;
+    final CategoryRepository categoryRepository;
 
-    private final UserRepository userRepository;
+    final UserRepository userRepository;
 
-    private final ParticipationRequestRepository requestRepository;
+    final ParticipationRequestRepository requestRepository;
 
-    private final StatsClient client;
+    final StatsClient client;
+
+    final LocalDateTime now = LocalDateTime.now();
     public static final LocalDateTime START = LocalDateTime.of(2000, 1, 1, 0, 0);
 
-    private final LocalDateTime now = LocalDateTime.now();
 
     @Transactional(readOnly = true)
     @Override

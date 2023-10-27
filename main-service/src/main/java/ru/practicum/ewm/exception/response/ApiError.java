@@ -1,13 +1,16 @@
 package ru.practicum.ewm.exception.response;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ApiError {
-    private String status;
-    private String reason;
-    private String message;
-    private String timestamp;
+    String status;
+    String reason;
+    String message;
+    String timestamp;
 }

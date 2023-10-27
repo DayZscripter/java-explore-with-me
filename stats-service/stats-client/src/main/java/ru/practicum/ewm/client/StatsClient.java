@@ -28,10 +28,12 @@ public class StatsClient {
 
     @Autowired
     public StatsClient(RestTemplate restTemplate) {
+
         this.restTemplate = restTemplate;
     }
 
     public void createHit(HitForPostDto hitDto) {
+
         restTemplate.postForLocation(serverUrl.concat("/hit"), hitDto);
     }
 

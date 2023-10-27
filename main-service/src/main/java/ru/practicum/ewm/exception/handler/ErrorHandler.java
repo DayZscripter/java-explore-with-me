@@ -27,38 +27,6 @@ public class ErrorHandler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiError handleMethodArgumentTypeMismatchException(final MethodArgumentTypeMismatchException e) {
-        log.error(e.getMessage());
-        return new ApiError("BAD_REQUEST", "Incorrectly made request.", e.getMessage(),
-                LocalDateTime.now().format(formatter));
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ApiError handleObjectNotFoundException(final ObjectNotFoundException e) {
-        log.error(e.getMessage());
-        return new ApiError("NOT_FOUND", "The required object was not found.", e.getMessage(),
-                LocalDateTime.now().format(formatter));
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public ApiError handleConditionsAreNotMetException(final ConditionsAreNotMetException e) {
-        log.error(e.getMessage());
-        return new ApiError("FORBIDDEN", "For the requested operation the conditions are not met.",
-                e.getMessage(), LocalDateTime.now().format(formatter));
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public ApiError handleDataIntegrityViolationException(final DataIntegrityViolationException e) {
-        log.error(e.getMessage());
-        return new ApiError("CONFLICT", "Integrity constraint has been violated.", e.getMessage(),
-                LocalDateTime.now().format(formatter));
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleMethodArgumentNotValidException(final MethodArgumentNotValidException e) {
         String message;
         if (e.hasFieldErrors()) {
@@ -79,6 +47,38 @@ public class ErrorHandler {
         log.error(message);
         return new ApiError("BAD_REQUEST", "Incorrectly made request.", message,
                 LocalDateTime.now().format(formatter));
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ApiError handleDataIntegrityViolationException(final DataIntegrityViolationException e) {
+        log.error(e.getMessage());
+        return new ApiError("CONFLICT", "Integrity constraint has been violated.", e.getMessage(),
+                LocalDateTime.now().format(formatter));
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handleMethodArgumentTypeMismatchException(final MethodArgumentTypeMismatchException e) {
+        log.error(e.getMessage());
+        return new ApiError("BAD_REQUEST", "Incorrectly made request.", e.getMessage(),
+                LocalDateTime.now().format(formatter));
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleObjectNotFoundException(final ObjectNotFoundException e) {
+        log.error(e.getMessage());
+        return new ApiError("NOT_FOUND", "The required object was not found.", e.getMessage(),
+                LocalDateTime.now().format(formatter));
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ApiError handleConditionsAreNotMetException(final ConditionsAreNotMetException e) {
+        log.error(e.getMessage());
+        return new ApiError("FORBIDDEN", "For the requested operation the conditions are not met.",
+                e.getMessage(), LocalDateTime.now().format(formatter));
     }
 
     @ExceptionHandler

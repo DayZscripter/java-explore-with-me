@@ -27,9 +27,6 @@ public class UpdateEventDto {
     @Size(min = 20, max = 7000)
     String description;
 
-    @Size(min = 3, max = 120)
-    String title;
-
     @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
     @EventDateValidator
     LocalDateTime eventDate;
@@ -44,4 +41,6 @@ public class UpdateEventDto {
 
     StateAction stateAction;
 
+    @Size(min = 3, max = 120)
+    String title;
 }

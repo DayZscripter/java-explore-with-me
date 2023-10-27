@@ -19,27 +19,22 @@ import static ru.practicum.ewm.ConstantsForDto.DATE_TIME_FORMAT_PATTERN;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class EventFullDto {
 
+    @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
+    LocalDateTime createdOn;
+
+    @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
+    LocalDateTime eventDate;
+
+    @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
+    LocalDateTime publishedOn;
+
     String annotation;
 
     CategoryDto category;
 
     Integer confirmedRequests;
 
-    @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
-    LocalDateTime createdOn;
-
     String description;
-
-    @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
-    LocalDateTime eventDate;
-
-
-    @JsonFormat(pattern = DATE_TIME_FORMAT_PATTERN)
-    LocalDateTime publishedOn;
-
-    boolean requestModeration;
-
-    EventState state;
 
     Long id;
 
@@ -47,9 +42,16 @@ public class EventFullDto {
 
     LocationDto location;
 
+    // исправлен на примитив requestModeration
+    boolean requestModeration;
+
+    //(правка ревьюера) paid может иметь лишь два состояния, поэтому лучше изменить тип на примитив. Если значение не будет передано,
+    // в таком случае оно будет проинициализировано не null, а false
     boolean paid;
 
     Integer participantLimit;
+
+    EventState state;
 
     String title;
 

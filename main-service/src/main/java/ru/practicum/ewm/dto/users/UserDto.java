@@ -1,6 +1,7 @@
 package ru.practicum.ewm.dto.users;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
@@ -10,15 +11,17 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserDto {
-    private Long id;
+
+    Long id;
 
     @Email
     @Length(min = 6, max = 254)
     @NotBlank
-    private String email;
+    String email;
 
     @NotBlank
     @Length(min = 2, max = 250)
-    private String name;
+    String name;
 }

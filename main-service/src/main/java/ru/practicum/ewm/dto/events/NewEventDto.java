@@ -25,15 +25,6 @@ public class NewEventDto {
     String annotation;
 
     @NotNull
-    LocationDto location;
-
-    Boolean paid;
-
-    Integer participantLimit;
-
-    Boolean requestModeration;
-
-    @NotNull
     Long category;
 
     @NotBlank
@@ -45,6 +36,14 @@ public class NewEventDto {
     @EventDateValidator
     LocalDateTime eventDate;
 
+    @NotNull
+    LocationDto location;
+
+    Boolean paid;
+
+    Integer participantLimit;
+
+    Boolean requestModeration;
 
     @NotBlank
     @Length(min = 3, max = 120)
