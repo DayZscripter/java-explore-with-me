@@ -1,8 +1,8 @@
 package ru.practicum.ewm.mapper;
 
-import ru.practicum.ewm.dto.events.EventFullDto;
-import ru.practicum.ewm.dto.events.EventShortDto;
-import ru.practicum.ewm.dto.events.NewEventDto;
+import ru.practicum.ewm.dto.event.EventFullDto;
+import ru.practicum.ewm.dto.event.EventShortDto;
+import ru.practicum.ewm.dto.event.NewEventDto;
 import ru.practicum.ewm.model.Event;
 
 public class EventMapper {

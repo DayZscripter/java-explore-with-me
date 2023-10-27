@@ -1,6 +1,6 @@
 package ru.practicum.ewm.mapper;
 
-import ru.practicum.ewm.dto.participationRequest.ParticipationRequestDto;
+import ru.practicum.ewm.dto.request.ParticipationRequestDto;
 import ru.practicum.ewm.model.ParticipationRequest;
 
 public class ParticipationRequestMapper {

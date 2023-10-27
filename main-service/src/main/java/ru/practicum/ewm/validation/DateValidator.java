@@ -8,13 +8,20 @@ public class DateValidator implements ConstraintValidator<EventDateValidator, Lo
 
     @Override
     public void initialize(EventDateValidator constraintAnnotation) {
+        // Метод инициализации, может быть пустым
     }
 
     @Override
     public boolean isValid(LocalDateTime eventDate, ConstraintValidatorContext constraintValidatorContext) {
         LocalDateTime now = LocalDateTime.now();
+
         if (eventDate != null) {
+            // Проверяем, что дата события находится в будущем
+            // и оставляем запас хотя бы 2 часа относительно текущего времени
             return eventDate.isAfter(now.plusHours(2L));
-        } else return true;
+        } else {
+            // Если дата не указана (null), считаем валидным
+            return true;
+        }
     }
 }

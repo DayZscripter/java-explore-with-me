@@ -1,6 +1,6 @@
 package ru.practicum.ewm.mapper;
 
-import ru.practicum.ewm.dto.LocationDto;
+import ru.practicum.ewm.dto.location.LocationDto;
 import ru.practicum.ewm.model.Location;
 
 public class LocationMapper {

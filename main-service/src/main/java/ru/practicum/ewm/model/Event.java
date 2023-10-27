@@ -2,7 +2,7 @@ package ru.practicum.ewm.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.ewm.model.enums.EventState;
+import ru.practicum.ewm.enums.EventState;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

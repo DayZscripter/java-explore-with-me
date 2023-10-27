@@ -1,8 +1,8 @@
 package ru.practicum.ewm.mapper;
 
-import ru.practicum.ewm.dto.compilations.CompilationDto;
-import ru.practicum.ewm.dto.compilations.NewCompilationDto;
-import ru.practicum.ewm.dto.events.EventShortDto;
+import ru.practicum.ewm.dto.compilation.CompilationDto;
+import ru.practicum.ewm.dto.compilation.NewCompilationDto;
+import ru.practicum.ewm.dto.event.EventShortDto;
 import ru.practicum.ewm.model.Compilation;
 
 import java.util.ArrayList;
