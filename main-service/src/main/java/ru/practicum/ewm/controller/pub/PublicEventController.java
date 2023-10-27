@@ -1,14 +1,14 @@
-package ru.practicum.ewm.controller.publicController;
+package ru.practicum.ewm.controller.pub;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.dto.events.EventFullDto;
-import ru.practicum.ewm.dto.events.EventShortDto;
-import ru.practicum.ewm.model.enums.EventSort;
-import ru.practicum.ewm.service.EventService;
+import ru.practicum.ewm.dto.event.EventFullDto;
+import ru.practicum.ewm.dto.event.EventShortDto;
+import ru.practicum.ewm.enums.EventSort;
+import ru.practicum.ewm.service.event.EventService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Positive;

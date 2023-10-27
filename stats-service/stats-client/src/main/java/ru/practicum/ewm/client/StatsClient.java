@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import ru.practicum.ewm.HitForPostDto;
+import ru.practicum.ewm.HitDtoForPost;
 import ru.practicum.ewm.StatisticsForDto;
 
 import java.time.LocalDateTime;
@@ -22,9 +22,9 @@ public class StatsClient {
     @Value("${stats-server.url}")
     private String serverUrl;
 
-    private final RestTemplate restTemplate;
-
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_PATTERN);
+
+    private final RestTemplate restTemplate;
 
     @Autowired
     public StatsClient(RestTemplate restTemplate) {
@@ -32,7 +32,7 @@ public class StatsClient {
         this.restTemplate = restTemplate;
     }
 
-    public void createHit(HitForPostDto hitDto) {
+    public void createHit(HitDtoForPost hitDto) {
 
         restTemplate.postForLocation(serverUrl.concat("/hit"), hitDto);
     }

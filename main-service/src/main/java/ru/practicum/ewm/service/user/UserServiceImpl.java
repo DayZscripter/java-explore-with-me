@@ -1,11 +1,11 @@
-package ru.practicum.ewm.service;
+package ru.practicum.ewm.service.user;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.dto.users.UserDto;
+import ru.practicum.ewm.dto.user.UserDto;
 import ru.practicum.ewm.exception.model.ObjectNotFoundException;
 import ru.practicum.ewm.mapper.UserMapper;
 import ru.practicum.ewm.model.User;

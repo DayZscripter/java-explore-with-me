@@ -1,10 +1,10 @@
-package ru.practicum.ewm.dto.events;
+package ru.practicum.ewm.dto.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.ewm.dto.LocationDto;
-import ru.practicum.ewm.model.enums.StateAction;
+import ru.practicum.ewm.dto.location.LocationDto;
+import ru.practicum.ewm.enums.StateAction;
 import ru.practicum.ewm.validation.EventDateValidator;
 
 import javax.validation.constraints.Size;

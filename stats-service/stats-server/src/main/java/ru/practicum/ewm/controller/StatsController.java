@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.ewm.HitForPostDto;
+import ru.practicum.ewm.HitDtoForPost;
 import ru.practicum.ewm.StatisticsForDto;
 import ru.practicum.ewm.service.StatsService;
 
@@ -24,7 +24,7 @@ public class StatsController {
 
     @PostMapping("/hit")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createHit(@Valid @RequestBody HitForPostDto hitDto) {
+    public void createHit(@Valid @RequestBody HitDtoForPost hitDto) {
         log.info("Запрос на сохранение статистики");
         service.createHit(hitDto);
     }
