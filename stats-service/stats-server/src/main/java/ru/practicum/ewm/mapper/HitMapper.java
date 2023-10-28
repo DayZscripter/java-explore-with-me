@@ -1,11 +1,11 @@
 package ru.practicum.ewm.mapper;
 
-import ru.practicum.ewm.HitForPostDto;
+import ru.practicum.ewm.HitDtoForPost;
 import ru.practicum.ewm.model.Hit;
 
 public class HitMapper {
 
-    public static Hit toHit(HitForPostDto hitDto) {
+    public static Hit toHit(HitDtoForPost hitDto) {
         Hit hit = new Hit();
         hit.setId(hitDto.getId());
         hit.setApp(hitDto.getApp());
@@ -15,8 +15,8 @@ public class HitMapper {
         return hit;
     }
 
-    public static HitForPostDto toHitDto(Hit hit) {
-        return HitForPostDto.builder()
+    public static HitDtoForPost toHitDto(Hit hit) {
+        return HitDtoForPost.builder()
                 .id(hit.getId())
                 .app(hit.getApp())
                 .uri(hit.getUri())

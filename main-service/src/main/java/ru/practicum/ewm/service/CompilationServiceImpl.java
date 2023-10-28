@@ -1,19 +1,21 @@
 package ru.practicum.ewm.service;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.dto.compilations.CompilationDto;
-import ru.practicum.ewm.dto.compilations.NewCompilationDto;
-import ru.practicum.ewm.dto.events.EventShortDto;
+import ru.practicum.ewm.dto.compilation.CompilationDto;
+import ru.practicum.ewm.dto.compilation.NewCompilationDto;
+import ru.practicum.ewm.dto.event.EventShortDto;
 import ru.practicum.ewm.exception.model.ObjectNotFoundException;
 import ru.practicum.ewm.mapper.CompilationMapper;
 import ru.practicum.ewm.model.Compilation;
 import ru.practicum.ewm.model.Event;
 import ru.practicum.ewm.model.ParticipationRequest;
-import ru.practicum.ewm.model.enums.RequestStatus;
+import ru.practicum.ewm.enums.RequestStatus;
 import ru.practicum.ewm.repository.CompilationRepository;
 import ru.practicum.ewm.repository.EventRepository;
 import ru.practicum.ewm.repository.ParticipationRequestRepository;
@@ -27,13 +29,14 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CompilationServiceImpl implements CompilationService {
 
-    private final CompilationRepository repository;
+    final CompilationRepository repository;
 
-    private final EventRepository eventRepository;
+    final EventRepository eventRepository;
 
-    private final ParticipationRequestRepository requestRepository;
+    final ParticipationRequestRepository requestRepository;
 
     @Transactional
     @Override

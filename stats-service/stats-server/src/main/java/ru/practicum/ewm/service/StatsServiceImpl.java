@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.HitForPostDto;
+import ru.practicum.ewm.HitDtoForPost;
 import ru.practicum.ewm.StatisticsForDto;
 import ru.practicum.ewm.exceptions.IncorrectlyMadeRequestException;
 import ru.practicum.ewm.mapper.HitMapper;
@@ -23,41 +23,34 @@ public class StatsServiceImpl implements StatsService {
     private final StatsRepository repository;
 
     @Override
-    public void createHit(HitForPostDto hitDto) {
+    public void createHit(HitDtoForPost hitDto) {
         Hit hitForSave = HitMapper.toHit(hitDto);
         repository.save(hitForSave);
-        log.info("Информация сохранена");
+        log.info("Information saved");
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<StatisticsForDto> getStatistics(LocalDateTime start, LocalDateTime end, List<String> uris, boolean unique) {
         if (end.isBefore(start)) {
-            throw new IncorrectlyMadeRequestException("Значение поля end не может быть раньше значения поля start");
+            throw new IncorrectlyMadeRequestException("The 'end' date cannot be earlier than the 'start' date");
         }
-
-        List<StatisticsForDto> statistics;
-        String logMessage;
-
         if (unique) {
             if (uris != null) {
-                statistics = repository.getAllByTimestampAndUriUnique(start, end, uris);
-                logMessage = "Получили статистику по заданным uri и уникальным ip";
+                log.info("Received statistics for specified URIs and unique IPs");
+                return repository.getAllByTimestampAndUriUnique(start, end, uris);
             } else {
-                statistics = repository.getAllByTimestampUnique(start, end);
-                logMessage = "Получили статистику по уникальным ip";
+                log.info("Received statistics for unique IPs");
+                return repository.getAllByTimestampUnique(start, end);
             }
         } else {
             if (uris != null) {
-                statistics = repository.getAllByTimestampAndUri(start, end, uris);
-                logMessage = "Получили общую статистику по заданным uri";
+                log.info("Received general statistics for specified URIs");
+                return repository.getAllByTimestampAndUri(start, end, uris);
             } else {
-                statistics = repository.getAllByTimestamp(start, end);
-                logMessage = "Получили общую статистику";
+                log.info("Received general statistics");
+                return repository.getAllByTimestamp(start, end);
             }
         }
-
-        log.info(logMessage);
-        return statistics;
     }
 }
